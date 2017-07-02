@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list inset>
+
+<ion-item>
+  <ion-label color="primary">Server Url</ion-label>
+  <ion-input placeholder="http://server.com:8080" type="text" [(ngModel)]="serverUrl" name="serverUrl"></ion-input>
+
+</ion-item>
+<button ion-button (click)="save()">Save</button>
+<button ion-button (click)="testConfiguration()">Test Configuration</button>
+
+</ion-list>
+</ion-content>

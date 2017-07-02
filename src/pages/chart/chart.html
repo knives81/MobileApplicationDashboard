@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ChartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>chart</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <canvas ion-item *ngFor="let result of results" baseChart
+  [datasets]=result.data.datasets
+  [labels]=result.data.labels
+  [colors]=result.colors
+  [options]=result.options
+  [legend]="chartLegend"
+  [chartType]=result.type>
+</canvas>
+
+
+</ion-content>
