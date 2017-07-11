@@ -41,6 +41,9 @@ export class ChartPage {
 
   async getResult(confId : number) {
     let serverUrl = await this.configuration.getServerAsync();
+    if(serverUrl == null) {
+      serverUrl = "http://pinzisv.eastus.cloudapp.azure.com:8090";
+    }
     this.results = await this.chartServiceProvider.load(serverUrl,confId);
     console.log(this.results);
   }

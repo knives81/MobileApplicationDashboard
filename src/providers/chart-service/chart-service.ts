@@ -21,9 +21,6 @@ export class ChartServiceProvider {
   load(serverUrl: string, confId : number) {
     let apiUrl = serverUrl+'/testsetchart/'+confId.toString();
     console.log(apiUrl);
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
     return new Promise(resolve => {
       this.http.get(apiUrl)
         .map(res => res.json())

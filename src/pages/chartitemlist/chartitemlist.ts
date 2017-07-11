@@ -39,6 +39,9 @@ export class ChartitemlistPage {
 
   async getResult(tag : string) {
     let serverUrl = await this.configuration.getServerAsync();
+    if(serverUrl == null) {
+      serverUrl = "http://pinzisv.eastus.cloudapp.azure.com:8090";
+    }
     this.results = await this.chartItemServiceProvider.load(serverUrl,tag);
   }
 

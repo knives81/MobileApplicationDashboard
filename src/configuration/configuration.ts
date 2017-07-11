@@ -4,9 +4,11 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class Configuration {
     server : string;
+    
     constructor(public storage: Storage) {
       this.setModelServer();
     }
+
 
     saveServer(server : string) {
       this.server  = server;
@@ -17,7 +19,7 @@ export class Configuration {
     setModelServer() {
       let instance : Configuration = this;
       this.getServerAsync().then((val) => {
-        console.log(val);
+        console.log('Server url from db ='+val);
         instance.server = val;
       });
     }

@@ -24,6 +24,7 @@ export class ChartItemServiceProvider {
 
   load(serverInput : string, tag : string) {
     let apiUrl = serverInput+'/chartitem?filter='+tag;
+    console.log(apiUrl);
     return new Promise(resolve => {
       this.http.get(apiUrl)
         .map(res =>  res.json())
