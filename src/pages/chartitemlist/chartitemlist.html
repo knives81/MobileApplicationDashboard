@@ -11,14 +11,15 @@
     </button>
     <ion-title>Chart Item</ion-title>
   </ion-navbar>
+  <ion-searchbar [(ngModel)]="tag" (keyup)="keyHasBeenPressed($event)" placeholder="Search for tags"></ion-searchbar>
 </ion-header>
 
 
 <ion-content padding>
-   <ion-searchbar [(ngModel)]="tag" (keyup)="keyHasBeenPressed($event)"></ion-searchbar>
+
   <ion-list>
-  <button ion-item *ngFor="let result of results" (click)="itemSelected(result)">
-    <h2>{{ result.desc }}</h2>
+    <button ion-item *ngFor="let result of results" (click)="itemSelected(result)" >
+    <h3>{{ result.desc }}</h3>
     <p>Tags: {{ result.tags }}</p>
 
   </button>

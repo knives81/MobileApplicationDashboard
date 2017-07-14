@@ -28,7 +28,6 @@ export class ChartitemlistPage {
   public alertCtrl: AlertController,
   public configuration : Configuration) {
     this.getResult(this.tag);
-
   }
 
   keyHasBeenPressed(e) {

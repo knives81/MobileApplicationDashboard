@@ -20,18 +20,22 @@ import { Configuration } from '../configuration/configuration';
 import { IonicStorageModule } from '@ionic/storage';
 import { TestConfigurationServiceProvider } from '../providers/test-configuration-service/test-configuration-service';
 
+import { SettingsPageModule } from '../pages/settings/settings.module';
+import { ChartPageModule } from '../pages/chart/chart.module';
+import { ChartitemlistPageModule } from '../pages/chartitemlist/chartitemlist.module';
+
 @NgModule({
   declarations: [
-    MyApp,
-    ChartPage,
-    ChartitemlistPage,
-    SettingsPage
+    MyApp
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     ChartsModule,
+    ChartPageModule,
+    ChartitemlistPageModule,
+    SettingsPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
