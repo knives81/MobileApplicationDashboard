@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { ChartPage } from '../pages/chart/chart';
 import { ChartitemlistPage } from '../pages/chartitemlist/chartitemlist';
 import { SettingsPage } from '../pages/settings/settings';
+import { AboutPage } from '../pages/about/about';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +23,9 @@ import { TestConfigurationServiceProvider } from '../providers/test-configuratio
 
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { ChartPageModule } from '../pages/chart/chart.module';
+import { AboutPageModule } from '../pages/about/about.module';
 import { ChartitemlistPageModule } from '../pages/chartitemlist/chartitemlist.module';
+import { AboutServiceProvider } from '../providers/about-service/about-service';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { ChartitemlistPageModule } from '../pages/chartitemlist/chartitemlist.mo
     ChartPageModule,
     ChartitemlistPageModule,
     SettingsPageModule,
+    AboutPageModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -43,7 +47,8 @@ import { ChartitemlistPageModule } from '../pages/chartitemlist/chartitemlist.mo
     MyApp,
     ChartPage,
     ChartitemlistPage,
-    SettingsPage
+    SettingsPage,
+    AboutPage
   ],
   providers: [
     StatusBar,
@@ -52,7 +57,8 @@ import { ChartitemlistPageModule } from '../pages/chartitemlist/chartitemlist.mo
     ChartItemServiceProvider,
     ChartServiceProvider,
     Configuration,
-    TestConfigurationServiceProvider
+    TestConfigurationServiceProvider,
+    AboutServiceProvider
   ]
 })
 export class AppModule {}

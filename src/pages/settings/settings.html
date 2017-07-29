@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar  color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -19,9 +19,28 @@
 
 <ion-item>
   <ion-label color="primary">Server Url</ion-label>
-  <ion-input placeholder="http://server.com:8080" type="text" [(ngModel)]="serverUrl" name="serverUrl"></ion-input>
-
 </ion-item>
+<ion-item>
+  <ion-input placeholder="server.com:8080" type="text" [(ngModel)]="server" name="server"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label color="primary">Username</ion-label>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Username" type="text" [(ngModel)]="username" name="username"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label color="primary">Password</ion-label>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Password" type="password" [(ngModel)]="password" name="password"></ion-input>
+</ion-item>
+
+
+
+
+
+
 <button ion-button (click)="save()">Save</button>
 <button ion-button (click)="testConfiguration()">Test Configuration</button>
 

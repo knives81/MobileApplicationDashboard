@@ -4,35 +4,36 @@ import { Http, Headers, RequestOptions  } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Configuration } from '../../configuration/configuration';
 
-
 /*
-  Generated class for the ChartServiceProvider provider.
+  Generated class for the AboutServiceProvider provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class ChartServiceProvider {
+export class AboutServiceProvider {
+
   data : any;
 
-  constructor(public http: Http, public configuration : Configuration,public alertCtrl : AlertController) {
-    console.log('Hello ChartServiceProvider Provider');
-  }
+  constructor(public http: Http, public configuration : Configuration,
+  public alertCtrl : AlertController) {
+    console.log('Hello AboutServiceProvider Provider');
 
-  async load(confId : number) {
+  }
+  async load() {
     let serverInput = await this.configuration.getServerOrDefaultServer();
     let username = await this.configuration.getUsernameOrDefaultUsername();
     let password = await this.configuration.getPasswordOrDefaultPassword();
-    return this.getChart(serverInput, confId,username,password);
+    return this.getInfo(serverInput,username,password);
   }
 
-  getChart(serverUrl: string, confId : number,username:string,password:string) {
+  getInfo(serverUrl: string,username:string,password:string) {
     let headers: Headers = new Headers();
     headers.append("Content-Type", "application/x-www-form-urlencoded");
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));
     let options = new RequestOptions({headers:headers});
 
-    let apiUrl = 'http://'+serverUrl+'/testsetchart/'+confId.toString();
+    let apiUrl = 'http://'+serverUrl+'/infoapp';
     console.log(apiUrl,options);
     return new Promise(resolve => {
       this.http.get(apiUrl,options)

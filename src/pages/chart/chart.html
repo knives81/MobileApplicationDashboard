@@ -8,7 +8,7 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>chart</ion-title>
   </ion-navbar>
 
@@ -16,7 +16,7 @@
 
 
 <ion-content padding>
-
+  <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
   <canvas ion-item *ngFor="let result of results" baseChart
   [datasets]=result.data.datasets
   [labels]=result.data.labels

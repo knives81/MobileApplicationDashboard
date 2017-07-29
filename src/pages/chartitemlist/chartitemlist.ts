@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { ChartItemServiceProvider } from '../../providers/chart-item-service/chart-item-service';
 import { ChartPage } from '../chart/chart';
-import { Configuration } from '../../configuration/configuration';
-
 /**
  * Generated class for the ChartitemlistPage page.
  *
@@ -18,16 +16,15 @@ import { Configuration } from '../../configuration/configuration';
 })
 export class ChartitemlistPage {
 
-  results : any;
+  results : any = 0;
   chartPage = ChartPage;
   tag : string = '';
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public chartItemServiceProvider: ChartItemServiceProvider,
-  public alertCtrl: AlertController,
-  public configuration : Configuration) {
-    this.getResult(this.tag);
+  public alertCtrl: AlertController) {
+
   }
 
   keyHasBeenPressed(e) {
@@ -37,11 +34,7 @@ export class ChartitemlistPage {
   }
 
   async getResult(tag : string) {
-    let serverUrl = await this.configuration.getServerAsync();
-    if(serverUrl == null) {
-      serverUrl = "http://pinzisv.eastus.cloudapp.azure.com:8090";
-    }
-    this.results = await this.chartItemServiceProvider.load(serverUrl,tag);
+    this.results = await this.chartItemServiceProvider.load(tag);
   }
 
   itemSelected(item: any) {
@@ -51,6 +44,7 @@ export class ChartitemlistPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChartitemlistPage');
+    this.getResult(this.tag);
   }
 
 }

@@ -16,7 +16,9 @@ import { TestConfigurationServiceProvider } from '../../providers/test-configura
 })
 export class SettingsPage {
 
-  serverUrl : string = "";
+  server : string = "";
+  username : string = "";
+  password : string = "";
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -28,15 +30,17 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
-    this.serverUrl = this.configuration.server;
+    this.server = this.configuration.server;
+    this.username = this.configuration.username;
+    this.password = this.configuration.password;
   }
   save() {
-    this.configuration.saveServer(this.serverUrl);
+    this.configuration.saveConf(this.server,this.username,this.password);
     this.presentToast();
 
   }
   testConfiguration() {
-    this.testConfigurationServiceProvider.getHealth(this.serverUrl)
+    this.testConfigurationServiceProvider.checkConf(this.server,this.username,this.password)
     .then((value) => {console.log('success'+value);})
     .catch((err)=>{console.log('error'+err);});
   }
@@ -44,7 +48,7 @@ export class SettingsPage {
 
   presentToast() {
     let toast = this.toastCtrl.create({
-      message: 'Server Url saved successfully',
+      message: 'Info saved successfully',
       duration: 3000,
       position: 'top'
     });

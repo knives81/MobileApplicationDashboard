@@ -17,7 +17,7 @@ import { Configuration } from '../../configuration/configuration';
   providers: [ChartServiceProvider]
 })
 export class ChartPage {
-  results : any;
+  results : any = 0;
   chartLegend: boolean = true;
 
   chartOption = {
@@ -35,21 +35,17 @@ export class ChartPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public configuration : Configuration,
     public chartServiceProvider :ChartServiceProvider) {
-      let confId = navParams.get('confId');
-      this.getResult(confId);
+      this.confId = navParams.get('confId');
+
   }
+
 
   async getResult(confId : number) {
-    let serverUrl = await this.configuration.getServerAsync();
-    if(serverUrl == null) {
-      serverUrl = "http://pinzisv.eastus.cloudapp.azure.com:8090";
-    }
-    this.results = await this.chartServiceProvider.load(serverUrl,confId);
-    console.log(this.results);
+    this.results = await this.chartServiceProvider.load(confId);
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChartPage');
+    this.getResult(this.confId);
   }
 
 }

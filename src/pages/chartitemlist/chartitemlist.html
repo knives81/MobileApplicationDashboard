@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -17,12 +17,13 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <button ion-item *ngFor="let result of results" (click)="itemSelected(result)" >
-    <h3>{{ result.desc }}</h3>
-    <p>Tags: {{ result.tags }}</p>
+  <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
+    <ion-list *ngIf="results!=0">
+      <button ion-item *ngFor="let result of results" (click)="itemSelected(result)" >
+      <h3>{{ result.desc }}</h3>
+      <p>Tags: {{ result.tags }}</p>
 
-  </button>
-</ion-list>
+      </button>
+    </ion-list>
 
 </ion-content>
