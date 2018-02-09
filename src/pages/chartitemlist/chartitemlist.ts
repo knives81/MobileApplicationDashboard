@@ -20,6 +20,8 @@ export class ChartitemlistPage {
   chartPage = ChartPage;
   tag : string = '';
 
+  
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public chartItemServiceProvider: ChartItemServiceProvider,
@@ -43,8 +45,11 @@ export class ChartitemlistPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChartitemlistPage');
+  }
+
+  ionViewWillEnter() {
     this.getResult(this.tag);
   }
+
 
 }

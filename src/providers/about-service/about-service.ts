@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AlertController} from 'ionic-angular';
-import { Http, Headers, RequestOptions  } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Configuration } from '../../configuration/configuration';
+import { Util } from '../../configuration/util';
 
 /*
   Generated class for the AboutServiceProvider provider.
@@ -16,24 +17,20 @@ export class AboutServiceProvider {
   data : any;
 
   constructor(public http: Http, public configuration : Configuration,
-  public alertCtrl : AlertController) {
-    console.log('Hello AboutServiceProvider Provider');
+  public alertCtrl : AlertController, public util: Util) { }
 
-  }
-  async load() {
-    let serverInput = await this.configuration.getServerOrDefaultServer();
-    let username = await this.configuration.getUsernameOrDefaultUsername();
-    let password = await this.configuration.getPasswordOrDefaultPassword();
-    return this.getInfo(serverInput,username,password);
+  public async load() {
+    let serverUrl = await this.configuration.getServer();
+    let username = await this.configuration.getUsername();
+    let password = await this.configuration.getPassword();
+    return this.getAbout(serverUrl,username,password);
   }
 
-  getInfo(serverUrl: string,username:string,password:string) {
-    let headers: Headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
-    headers.append("Authorization", "Basic " + btoa(username + ":" + password));
-    let options = new RequestOptions({headers:headers});
+  private getAbout(serverUrl: string,username:string,password:string) {
+    let options = this.util.getHeaders(username,password);
+    let apiUrl = this.util.getInfoAppUrl(serverUrl);
 
-    let apiUrl = 'http://'+serverUrl+'/infoapp';
+
     console.log(apiUrl,options);
     return new Promise(resolve => {
       this.http.get(apiUrl,options)

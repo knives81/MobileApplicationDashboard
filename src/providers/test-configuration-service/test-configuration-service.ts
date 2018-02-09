@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Configuration } from '../../configuration/configuration';
+import { Util } from '../../configuration/util';
 import { AlertController} from 'ionic-angular';
 
 /*
@@ -16,21 +17,13 @@ export class TestConfigurationServiceProvider {
   data : any;
 
   constructor(public http: Http, public configuration : Configuration,
-    public alertCtrl : AlertController) {
-    console.log('Hello TestConfigurationServiceProvider Provider');
+    public alertCtrl : AlertController, public util: Util) {
   }
 
-
-
-
   checkConf(serverUrl : string, username : string, password : string) {
-    let headers: Headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
-    headers.append("Authorization", "Basic " + btoa(username + ":" + password));
-    let options = new RequestOptions({headers:headers});
-
-
-    let apiUrl = 'http://'+serverUrl+'/checkconf';
+    let options = this.util.getHeaders(username,password);
+    let apiUrl = this.util.getCheckConfUrl(serverUrl);
+    
     console.log(apiUrl);
 
     return new Promise(resolve => {
@@ -49,7 +42,6 @@ export class TestConfigurationServiceProvider {
           resolve(this.data);
         },
         err => {
-          console.log("Errorre cazzo"+err);
           let alert = this.alertCtrl.create({
             title : 'Error',
             subTitle : 'Connection Error',

@@ -16,7 +16,7 @@ import { TestConfigurationServiceProvider } from '../../providers/test-configura
 })
 export class SettingsPage {
 
-  server : string = "";
+  serverUrl : string = "";
   username : string = "";
   password : string = "";
 
@@ -30,17 +30,17 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
-    this.server = this.configuration.server;
+    this.serverUrl = this.configuration.serverUrl;
     this.username = this.configuration.username;
     this.password = this.configuration.password;
   }
   save() {
-    this.configuration.saveConf(this.server,this.username,this.password);
+    this.configuration.saveConf(this.serverUrl,this.username,this.password);
     this.presentToast();
 
   }
   testConfiguration() {
-    this.testConfigurationServiceProvider.checkConf(this.server,this.username,this.password)
+    this.testConfigurationServiceProvider.checkConf(this.serverUrl,this.username,this.password)
     .then((value) => {console.log('success'+value);})
     .catch((err)=>{console.log('error'+err);});
   }
@@ -52,11 +52,7 @@ export class SettingsPage {
       duration: 3000,
       position: 'top'
     });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
+    toast.onDidDismiss(() => {});
     toast.present();
   }
 

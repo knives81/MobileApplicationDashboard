@@ -18,6 +18,7 @@ import { ChartItemServiceProvider } from '../providers/chart-item-service/chart-
 import { ChartServiceProvider } from '../providers/chart-service/chart-service';
 
 import { Configuration } from '../configuration/configuration';
+import { Util } from '../configuration/util';
 import { IonicStorageModule } from '@ionic/storage';
 import { TestConfigurationServiceProvider } from '../providers/test-configuration-service/test-configuration-service';
 
@@ -57,6 +58,7 @@ import { AboutServiceProvider } from '../providers/about-service/about-service';
     ChartItemServiceProvider,
     ChartServiceProvider,
     Configuration,
+    Util,
     TestConfigurationServiceProvider,
     AboutServiceProvider
   ]

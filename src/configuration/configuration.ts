@@ -3,35 +3,30 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class Configuration {
-    server : string;
+    serverUrl : string;
     username : string;
     password : string;
-
-    defaultServer = "pinzisv.eastus.cloudapp.azure.com:8090";
-    defaultUsername = "user";
-    defaultPassword = "db80f345-ecf6-4596-a93f-4bde7092caeb";
-    appVersion = "1.1";
+    appVersion = "1.5";
 
     constructor(public storage: Storage) {
-      console.log('load conf');
+      console.log('Load configuration');
       this.setModel();
-      console.log(this.server + this.username + this.password);
     }
 
-    saveConf(server : string, username : string, password : string) {
-      this.server  = server;
+    public saveConf(serverUrl : string, username : string, password : string) {
+      this.serverUrl  = serverUrl;
       this.username  = username;
       this.password  = password;
-      this.storage.set('server_url', server);
+      this.storage.set('server_url', serverUrl);
       this.storage.set('username', username);
       this.storage.set('password', password);
-      console.log(server);
+      console.log(serverUrl);
 
     }
-    setModel() {
+    private setModel() {
       let instance : Configuration = this;
       this.getServerAsync().then((val) => {
-        instance.server = val;
+        instance.serverUrl = val;
       });
       this.getUsernameAsync().then((val) => {
         instance.username = val;
@@ -41,35 +36,35 @@ export class Configuration {
       });
     }
 
-    async getServerOrDefaultServer() {
+    async getServer() {
       let server = await this.getServerAsync();
       if(server == null) {
-        return this.defaultServer;
+        return "";
       }
       return server;
     }
-    async getUsernameOrDefaultUsername() {
+    async getUsername() {
       let username = await this.getUsernameAsync();
       if(username == null) {
-        return this.defaultUsername;
+        return "";
       }
       return username;
     }
-    async getPasswordOrDefaultPassword() {
+    async getPassword() {
       let password = await this.getPasswordAsync();
       if(password == null) {
-        return this.defaultPassword;
+        return "";
       }
       return password;
     }
 
-    getServerAsync() {
+    private getServerAsync() {
       return this.storage.get('server_url');
     }
-    getUsernameAsync() {
+    private getUsernameAsync() {
       return this.storage.get('username');
     }
-    getPasswordAsync() {
+    private getPasswordAsync() {
       return this.storage.get('password');
     }
 }

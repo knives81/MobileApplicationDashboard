@@ -1,8 +1,9 @@
 import { Injectable  } from '@angular/core';
 import { AlertController} from 'ionic-angular';
-import { Http, Headers, RequestOptions  } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Configuration } from '../../configuration/configuration';
+import { Util } from '../../configuration/util';
 
 /*
   Generated class for the ChartItemServiceProvider provider.
@@ -12,30 +13,37 @@ import { Configuration } from '../../configuration/configuration';
 */
 @Injectable()
 export class ChartItemServiceProvider {
-
-
   data : any;
 
+  chartItem: Array<any> = [
+  {"desc": "Demo Data Piechart",	"tags": "Tag1,Tag2", "chartType": "PIECHART",	"entityType": "TESTSET", "confId": 0},
+  {"desc": "Demo Data Linechart",	"tags": "Tag3", 	"chartType": "LINECHART", 	"entityType": "TESTSET","confId": 1}
+];
+
   constructor(public http: Http, public configuration : Configuration,
-  public alertCtrl : AlertController) {
-    console.log('Hello ChartItemServiceProvider Provider');
-
+  public alertCtrl : AlertController, public util: Util) {
   }
 
-  async load(tag : string) {
-    let serverInput = await this.configuration.getServerOrDefaultServer();
-    let username = await this.configuration.getUsernameOrDefaultUsername();
-    let password = await this.configuration.getPasswordOrDefaultPassword();
-    return this.getChartItem(serverInput, tag,username,password);
+
+
+  public async load(tag : string) {
+    let serverUrl = await this.configuration.getServer();
+    let username = await this.configuration.getUsername();
+    let password = await this.configuration.getPassword();
+    return this.getChartItem(serverUrl, tag,username,password);
   }
 
-  getChartItem(serverInput : string, tag : string, username:string,password:string) {
+  private getChartItem(serverUrl : string, tag : string, username:string,password:string) {
+    let options = this.util.getHeaders(username,password);
+    let apiUrl = this.util.getChartItemUrl(serverUrl,tag);
 
-    let headers: Headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
-    headers.append("Authorization", "Basic " + btoa(username + ":" + password));
-    let options = new RequestOptions({headers:headers});
-    let apiUrl = 'http://'+serverInput+'/chartitem?filter='+tag;
+    if(serverUrl=="") {
+      return new Promise(resolve => {
+        this.data = this.chartItem;
+        resolve(this.data);
+      })
+    }
+
     console.log(apiUrl);
     return new Promise(resolve => {
       this.http.get(apiUrl,options)
@@ -58,8 +66,4 @@ export class ChartItemServiceProvider {
     });
 
   }
-
-
-
-
 }

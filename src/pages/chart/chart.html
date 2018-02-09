@@ -14,17 +14,14 @@
 
 </ion-header>
 
-
 <ion-content padding>
-  <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
-  <canvas ion-item *ngFor="let result of results" baseChart
-  [datasets]=result.data.datasets
-  [labels]=result.data.labels
-  [colors]=result.colors
-  [options]=result.options
+<canvas *ngIf="isReady" ion-item baseChart
+  [datasets]="chartDatasets"
+  [labels]="chartLabels"
+  [colors]="chartColors"
+  [options]="chartOptions"
   [legend]="chartLegend"
-  [chartType]=result.type>
+  [chartType]="chartType">
 </canvas>
-
 
 </ion-content>
