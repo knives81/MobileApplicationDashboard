@@ -17,7 +17,7 @@ export class ChartServiceProvider {
   data : any;
 
   chart0 : any = {
-	"type": "pie",
+	"type": "doughnut",
 	"data": {
 		"datasets": [{
 			"fill": false,

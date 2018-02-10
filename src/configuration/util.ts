@@ -24,9 +24,15 @@ export class Util {
   getChartUrl(serverUrl: string, confId : number) {
     return 'http://'+serverUrl+'/testsetchart/'+confId;
   }
+  getChartBySelectorUrl(serverUrl: string, key1 : string,key2 : string,entity : string,chart : string,) {
+    return 'http://'+serverUrl+'/testsetchart?key1='+key1+'&key2='+key2+'&entity='+entity+'&chart='+chart;
+  }
 
   getInfoAppUrl(serverUrl: string) {
     return 'http://'+serverUrl+'/infoapp';
+  }
+  getSelectorUrl(serverUrl: string) {
+    return 'http://'+serverUrl+'/selector';
   }
 
   logTime(message: string){

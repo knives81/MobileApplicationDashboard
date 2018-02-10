@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { ChartitemlistPage } from '../pages/chartitemlist/chartitemlist';
+import { ChartselectorPage } from '../pages/chartselector/chartselector';
 
 @Component({
   templateUrl: 'app.html'

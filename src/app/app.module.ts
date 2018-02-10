@@ -11,6 +11,7 @@ import { ChartPage } from '../pages/chart/chart';
 import { ChartitemlistPage } from '../pages/chartitemlist/chartitemlist';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
+import { ChartselectorPage } from '../pages/chartselector/chartselector';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +27,9 @@ import { SettingsPageModule } from '../pages/settings/settings.module';
 import { ChartPageModule } from '../pages/chart/chart.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { ChartitemlistPageModule } from '../pages/chartitemlist/chartitemlist.module';
+import { ChartselectorPageModule } from '../pages/chartselector/chartselector.module';
 import { AboutServiceProvider } from '../providers/about-service/about-service';
+import { ChartSelectorServiceProvider } from '../providers/chart-selector-service/chart-selector-service';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { AboutServiceProvider } from '../providers/about-service/about-service';
     ChartPageModule,
     ChartitemlistPageModule,
     SettingsPageModule,
+    ChartselectorPageModule,
     AboutPageModule,
     IonicStorageModule.forRoot()
   ],
@@ -48,6 +52,7 @@ import { AboutServiceProvider } from '../providers/about-service/about-service';
     MyApp,
     ChartPage,
     ChartitemlistPage,
+    ChartselectorPage,
     SettingsPage,
     AboutPage
   ],
@@ -60,7 +65,8 @@ import { AboutServiceProvider } from '../providers/about-service/about-service';
     Configuration,
     Util,
     TestConfigurationServiceProvider,
-    AboutServiceProvider
+    AboutServiceProvider,
+    ChartSelectorServiceProvider
   ]
 })
 export class AppModule {}
