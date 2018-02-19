@@ -111,6 +111,12 @@ export class ChartServiceProvider {
     let password = await this.configuration.getPassword();
     return this.getChart(serverUrl, confId, username, password);
   }
+  public async loadBySelector(selector : any) {
+    let serverUrl = await this.configuration.getServer();
+    let username = await this.configuration.getUsername();
+    let password = await this.configuration.getPassword();
+    return this.getChartByPost(serverUrl, selector, username, password);
+  }
 
   private getChart(serverUrl: string, confId : number,username:string,password:string) {
     let options = this.util.getHeaders(username,password);
@@ -130,6 +136,30 @@ export class ChartServiceProvider {
     console.log(apiUrl,options);
     return new Promise(resolve => {
       this.http.get(apiUrl,options)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        },
+        err => {
+          console.log(err.status);
+          let alert = this.alertCtrl.create({
+            title : 'Error',
+            subTitle : 'Connection Error',
+            buttons : ['Ok']
+          });
+          alert.present();
+        });
+    });
+
+  }
+
+  private getChartByPost(serverUrl: string, selector : any,username:string,password:string) {
+    let options = this.util.getHeaders(username,password);
+    let apiUrl = this.util.getChartForSelectorUrl(serverUrl);
+
+    return new Promise(resolve => {
+      this.http.post(apiUrl,selector.data,options)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

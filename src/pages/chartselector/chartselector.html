@@ -17,13 +17,23 @@
 
 <ion-content padding>
 
-  <ion-item>
-  <ion-label>Entity</ion-label>
-  <ion-select [(ngModel)]="ciao">
-    <ion-option *ngFor="let entityType of entityTypes" [value]="entityType">{{entityType}}</ion-option>
-  </ion-select>
-</ion-item>
-<button ion-button round (click)="chart()">Round Button</button>
+  <ion-card *ngFor="let result of results">
 
+  <ion-card-header>
+    {{result.entityType}}
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item  *ngFor="let item of result.items">
+        <ion-label>{{item.tagName}}</ion-label>
+        <ion-select [(ngModel)]="item.tagSelected">
+          <ion-option *ngFor="let tagValue of item.tagValues" [value]="tagValue">{{tagValue}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-button round (click)="itemSelected(result)">chart</button>
+  </ion-list>
 
+  </ion-card-content>
+
+</ion-card>
 </ion-content>

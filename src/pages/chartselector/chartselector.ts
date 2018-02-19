@@ -17,8 +17,8 @@ import { ChartPage } from '../chart/chart';
 export class ChartselectorPage {
 
   results : any = 0;
-  entityTypes : any;
-  ciao : string = "TESTSET";
+
+
 
   chartPage = ChartPage;
 
@@ -29,16 +29,30 @@ export class ChartselectorPage {
 
   async getResult() {
     this.results = await this.chartSelectorServiceProvider.load();
-    this.entityTypes = this.results.entityTypes;
-    console.log(this.entityTypes);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChartselectorPage');
     this.getResult();
   }
-  chart() {
-    console.log(this.ciao);
+  itemSelected(item: any) {
+    let isOk = true;
+    for (let entry of item.items) {
+      isOk = isOk && entry.tagSelected!="";
+    }    
+    if(!isOk) {
+      this.presentAlert();
+    } else {
+        this.navCtrl.push(this.chartPage,item);
+    }
   }
+
+  presentAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Madatory fields',
+    subTitle: 'please fill all the fields',
+    buttons: ['OK']
+  });
+  alert.present();
+}
 
 }

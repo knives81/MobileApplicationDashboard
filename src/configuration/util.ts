@@ -8,7 +8,7 @@ export class Util {
 
    getHeaders(username : string, password : string): RequestOptions {
     let headers: Headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
+    headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));
     let options = new RequestOptions({headers:headers});
     return options;
@@ -22,12 +22,11 @@ export class Util {
   }
 
   getChartUrl(serverUrl: string, confId : number) {
-    return 'http://'+serverUrl+'/testsetchart/'+confId;
+    return 'http://'+serverUrl+'/chart/'+confId;
   }
-  getChartBySelectorUrl(serverUrl: string, key1 : string,key2 : string,entity : string,chart : string,) {
-    return 'http://'+serverUrl+'/testsetchart?key1='+key1+'&key2='+key2+'&entity='+entity+'&chart='+chart;
+  getChartForSelectorUrl(serverUrl: string) {
+    return 'http://'+serverUrl+'/chart';
   }
-
   getInfoAppUrl(serverUrl: string) {
     return 'http://'+serverUrl+'/infoapp';
   }

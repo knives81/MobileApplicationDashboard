@@ -15,7 +15,7 @@ import { Util } from '../../configuration/util';
 export class AboutServiceProvider {
 
   data : any;
-
+  infoapp : Array<any> = [{"message":"The app is running with demo data"}]
   constructor(public http: Http, public configuration : Configuration,
   public alertCtrl : AlertController, public util: Util) { }
 
@@ -30,6 +30,14 @@ export class AboutServiceProvider {
     let options = this.util.getHeaders(username,password);
     let apiUrl = this.util.getInfoAppUrl(serverUrl);
 
+
+    console.log('serverUrl'+serverUrl);
+    if(serverUrl=="") {
+      return new Promise(resolve => {
+        this.data = this.infoapp;
+        resolve(this.data);
+      })
+    }
 
     console.log(apiUrl,options);
     return new Promise(resolve => {

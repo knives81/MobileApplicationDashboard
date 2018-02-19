@@ -16,6 +16,8 @@ export class TestConfigurationServiceProvider {
 
   data : any;
 
+
+
   constructor(public http: Http, public configuration : Configuration,
     public alertCtrl : AlertController, public util: Util) {
   }
@@ -23,7 +25,17 @@ export class TestConfigurationServiceProvider {
   checkConf(serverUrl : string, username : string, password : string) {
     let options = this.util.getHeaders(username,password);
     let apiUrl = this.util.getCheckConfUrl(serverUrl);
-    
+
+
+    if(serverUrl=="") {
+      return new Promise(resolve => {
+        this.data = "";
+        resolve(this.data);
+      })
+    }
+
+
+
     console.log(apiUrl);
 
     return new Promise(resolve => {

@@ -16,6 +16,48 @@ export class ChartSelectorServiceProvider {
 
   data : any;
 
+  selector : Array<any> = [{
+	"entityType": "DEFECT",
+	"items": [{
+		"tagName": "PMO",
+		"tagValues": ["PMOyyy125",
+		"PMOyyy122",
+		"ALL"],
+		"tagSelected": ""
+	},
+	{
+		"tagName": "Chart Type",
+		"tagValues": ["PIECHART",
+		"LINECHART"],
+		"tagSelected": ""
+	}]
+},
+{
+	"entityType": "TESTSET",
+	"items": [{
+		"tagName": "PMO",
+		"tagValues": ["PMOyyy125",
+		"PMOyyy122",
+		"ALL"],
+		"tagSelected": ""
+	},
+	{
+		"tagName": "Cycle",
+		"tagValues": ["CFI",
+		"CA",
+		"ALL"],
+		"tagSelected": ""
+	},
+	{
+		"tagName": "Chart Type",
+		"tagValues": ["PIECHART",
+		"LINECHART"],
+		"tagSelected": ""
+	}]
+}];
+
+
+
   constructor(public http: Http, public configuration : Configuration,
   public alertCtrl : AlertController, public util: Util) {
   }
@@ -31,6 +73,12 @@ export class ChartSelectorServiceProvider {
     let options = this.util.getHeaders(username,password);
     let apiUrl = this.util.getSelectorUrl(serverUrl);
 
+    if(serverUrl=="") {
+      return new Promise(resolve => {
+        this.data = this.selector;
+        resolve(this.data);
+      })
+    }
 
     console.log(apiUrl);
     return new Promise(resolve => {

@@ -24,6 +24,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Chart Items', component: ChartitemlistPage },
+      { title: 'Chart Selector', component: ChartselectorPage },
       { title: 'Settings', component: SettingsPage },
       { title: 'About', component: AboutPage }
 

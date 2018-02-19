@@ -55,18 +55,27 @@ export class ChartPage {
    this.chartColors = await  this.results.colors;
    this.chartType = await this.results.type;
    this.isReady = await true;
-
-
+ }
+ async getResult2(selector : any) {
+   this.results = await this.chartServiceProvider.loadBySelector(selector);
+   this.chartDatasets = await this.results.data.datasets;
+   this.chartLabels = await this.results.data.labels;
+   this.chartColors = await  this.results.colors;
+   this.chartType = await this.results.type;
+   this.isReady = await true;
  }
  ionViewDidLoad() {
-   this.getResult(this.confId);
+   if(this.navParams.get('confId')==null) {
+     this.getResult2(this.navParams);
+   } else {
+     this.getResult(this.navParams.get('confId'));
+   }
  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public configuration : Configuration,
     public chartServiceProvider :ChartServiceProvider) {
-      this.confId = navParams.get('confId');
-    
+
     Chart.pluginService.register({
 	afterDraw: function (chart, easing) {
 		if (chart.config.options.showPercentage || chart.config.options.showLabel) {
@@ -134,9 +143,8 @@ export class ChartPage {
 					if (chart.config.options.showPercentage)
 						ctx.fillText(val2 + '%', dx, dy);
 					else {
-            var label = chart.config.data.labels[idx];
-
-						ctx.fillText(label + ' '+ dataset.data[idx], dx, dy);
+            //var label = chart.config.data.labels[idx];
+						ctx.fillText(dataset.data[idx], dx, dy);
 
             }
 				}
