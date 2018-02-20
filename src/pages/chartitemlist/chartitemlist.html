@@ -19,9 +19,9 @@
 
   <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
     <ion-list *ngIf="results!=0">
-      <button ion-item *ngFor="let result of results" (click)="itemSelected(result)" >
-      <h3>{{ result.desc }}</h3>
-      <!--p>Tags: {{ result.tags }}</p-->
+      <button ion-item icon-left *ngFor="let result of results" (click)="itemSelected(result)" >
+      {{ result.desc }}
+      <p>Tags: {{ result.tags }}</p>
       <ion-thumbnail  item-start>
         <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/piecharticon.png">
         <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/linecharticon2.png">

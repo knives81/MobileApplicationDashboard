@@ -158,6 +158,13 @@ export class ChartServiceProvider {
     let options = this.util.getHeaders(username,password);
     let apiUrl = this.util.getChartForSelectorUrl(serverUrl);
 
+    if(serverUrl=="") {
+      return new Promise(resolve => {
+        this.data = this.chart0;
+        resolve(this.data);
+      })
+    }
+
     return new Promise(resolve => {
       this.http.post(apiUrl,selector.data,options)
         .map(res => res.json())
