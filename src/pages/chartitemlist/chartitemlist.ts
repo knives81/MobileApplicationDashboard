@@ -20,7 +20,7 @@ export class ChartitemlistPage {
   chartPage = ChartPage;
   tag : string = '';
 
-  
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -37,6 +37,9 @@ export class ChartitemlistPage {
 
   async getResult(tag : string) {
     this.results = await this.chartItemServiceProvider.load(tag);
+    if(this.results == "") {
+        this.results = 1;
+    }
   }
 
   itemSelected(item: any) {

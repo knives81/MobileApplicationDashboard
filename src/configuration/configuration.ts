@@ -6,7 +6,7 @@ export class Configuration {
     serverUrl : string;
     username : string;
     password : string;
-    appVersion = "1.7";
+    appVersion = "1.8";
 
     constructor(public storage: Storage) {
       console.log('Load configuration');

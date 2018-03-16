@@ -18,7 +18,8 @@
 <ion-content padding>
 
   <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
-    <ion-list *ngIf="results!=0">
+   <ion-label fixed *ngIf="results==1">No items found</ion-label>
+    <ion-list *ngIf="results!=0 && results!=1">
       <button ion-item icon-left *ngFor="let result of results" (click)="itemSelected(result)" >
       {{ result.desc }}
       <p>Tags: {{ result.tags }}</p>
