@@ -54,6 +54,7 @@ export class ChartPage {
    this.chartLabels = await this.results.data.labels;
    this.chartColors = await  this.results.colors;
    this.chartType = await this.results.type;
+   this.chartOptions = await this.results.options;
    this.isReady = await true;
  }
  async getResult2(selector : any) {
@@ -62,6 +63,7 @@ export class ChartPage {
    this.chartLabels = await this.results.data.labels;
    this.chartColors = await  this.results.colors;
    this.chartType = await this.results.type;
+   this.chartOptions = await this.results.options;
    this.isReady = await true;
  }
  ionViewDidLoad() {

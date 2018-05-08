@@ -16,8 +16,8 @@ export class ChartItemServiceProvider {
   data : any;
 
   chartItem: Array<any> = [
-  {"desc": "Demo Data Piechart",	"tags": "Tag1,Tag2", "chartType": "PIECHART",	"entityType": "TESTSET", "confId": 0},
-  {"desc": "Demo Data Linechart",	"tags": "Tag3", 	"chartType": "LINECHART", 	"entityType": "TESTSET","confId": 1}
+  {"desc": "Demo Data Piechart",	"tags": ["Tag1","Tag2"], "chartType": "PIECHART",	"entityType": "TESTSET", "confId": 0},
+  {"desc": "Demo Data Linechart",	"tags": ["Tag3"], 	"chartType": "LINECHART", 	"entityType": "TESTSET","confId": 1}
 ];
 
   constructor(public http: Http, public configuration : Configuration,

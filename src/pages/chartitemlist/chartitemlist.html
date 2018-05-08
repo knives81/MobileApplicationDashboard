@@ -21,12 +21,16 @@
    <ion-label fixed *ngIf="results==1">No items found</ion-label>
     <ion-list *ngIf="results!=0 && results!=1">
       <button ion-item icon-left *ngFor="let result of results" (click)="itemSelected(result)" >
+        <ion-avatar item-left>
+          <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/dough.png">
+          <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/line.png">
+        </ion-avatar>
       {{ result.desc }}
-      <p>Tags: {{ result.tags }}</p>
-      <ion-thumbnail  item-start>
-        <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/piecharticon.png">
-        <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/linecharticon2.png">
-      </ion-thumbnail>
+      <p>{{ result.tags}}</p>
+      <!--ion-thumbnail  item-start>
+        <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/line.png">
+        <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/dought.png">
+      </ion-thumbnail-->
 
       </button>
     </ion-list>
