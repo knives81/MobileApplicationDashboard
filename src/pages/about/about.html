@@ -22,13 +22,13 @@
    <h4>Mobile Application Dashboard</h4>
    <ion-list *ngIf="results!=0">
      <ion-item>
-       <h3>App Mobile version: {{appVersion}}</h3>
+       Mobile App version: {{appVersion}}
      </ion-item>
      <ion-item *ngFor="let result of results">
-       <h3>{{ result.message }}</h3>
+       {{ result.message }}
      </ion-item>
      <ion-item>
-       <h3>Contacts: maurizio.pinzi@microfocus.com</h3>
+       Contacts: maurizio.pinzi@microfocus.com
      </ion-item>
    </ion-list>
 

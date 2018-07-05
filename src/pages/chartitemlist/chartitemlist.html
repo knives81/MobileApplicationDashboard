@@ -20,7 +20,7 @@
   <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
    <ion-label fixed *ngIf="results==1">No items found</ion-label>
     <ion-list *ngIf="results!=0 && results!=1">
-      <button ion-item icon-left *ngFor="let result of results" (click)="itemSelected(result)" >
+      <button ion-item icon-left *ngFor="let result of results" (click)="itemSelected(result)" text-wrap>
         <ion-avatar item-left>
           <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/dough.png">
           <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/line.png">
