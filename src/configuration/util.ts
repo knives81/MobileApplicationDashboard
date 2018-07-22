@@ -18,7 +18,7 @@ export class Util {
     return 'http://'+serverUrl+'/checkconf';
   }
   getChartItemUrl(serverUrl: string, tag: string) {
-    return 'http://'+serverUrl+'/chartitem?filter='+tag;
+    return 'http://'+serverUrl+'/chartitemgroup?filter='+tag;
   }
 
   getChartUrl(serverUrl: string, confId : number) {

@@ -19,7 +19,22 @@
 
   <ion-spinner name="bubbles" *ngIf="results==0"></ion-spinner>
    <ion-label fixed *ngIf="results==1">No items found</ion-label>
-    <ion-list *ngIf="results!=0 && results!=1">
+
+   <ion-item-group *ngFor="let groupresult of results">
+    <ion-item-divider color="light">{{ groupresult.group }}</ion-item-divider>
+    <button ion-item icon-left *ngFor="let result of groupresult.chartItems" (click)="itemSelected(result)" text-wrap>
+      <ion-avatar item-left>
+        <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/dough.png">
+        <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/line.png">
+      </ion-avatar>
+    {{ result.desc }}
+    <p>{{ result.tags}}</p>
+    </button>
+  </ion-item-group>
+
+
+
+    <!--ion-list *ngIf="results!=0 && results!=1">
       <button ion-item icon-left *ngFor="let result of results" (click)="itemSelected(result)" text-wrap>
         <ion-avatar item-left>
           <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/dough.png">
@@ -27,12 +42,7 @@
         </ion-avatar>
       {{ result.desc }}
       <p>{{ result.tags}}</p>
-      <!--ion-thumbnail  item-start>
-        <img  *ngIf="result.chartType=='PIECHART'" src="assets/img/line.png">
-        <img  *ngIf="result.chartType=='LINECHART'" src="assets/img/dought.png">
-      </ion-thumbnail-->
-
       </button>
-    </ion-list>
+    </ion-list-->
 
 </ion-content>

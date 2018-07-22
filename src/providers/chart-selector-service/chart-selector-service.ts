@@ -19,7 +19,7 @@ export class ChartSelectorServiceProvider {
   selector : Array<any> = [{
 	"entityType": "DEFECT",
 	"items": [{
-		"tagName": "PMO",
+		"tagName": "CR",
 		"tagValues": ["PMOyyy125",
 		"PMOyyy122",
 		"ALL"],
@@ -35,7 +35,7 @@ export class ChartSelectorServiceProvider {
 {
 	"entityType": "TESTSET",
 	"items": [{
-		"tagName": "PMO",
+		"tagName": "CR",
 		"tagValues": ["PMOyyy125",
 		"PMOyyy122",
 		"ALL"],

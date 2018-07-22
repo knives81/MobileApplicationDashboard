@@ -20,6 +20,16 @@ export class ChartItemServiceProvider {
   {"desc": "Demo Data Linechart",	"tags": ["Tag3"], 	"chartType": "LINECHART", 	"entityType": "TESTSET","confId": 1}
 ];
 
+chartItem2: Array<any> = [
+  {"group":"CR1234567","chartItems":[
+    {"desc": "Demo Data Piechart 1",	"tags": ["CR1234567","Tag1"], "chartType": "PIECHART",	"entityType": "TESTSET", "confId": 0},
+  {"desc": "Demo Data Linechart",	"tags": ["CR1234567","Tag2"], 	"chartType": "LINECHART", 	"entityType": "TESTSET","confId": 1}
+  ]},
+  {"group":"CR7654321","chartItems":[
+    {"desc": "Demo Data Piechart 2",	"tags": ["CR7654321","Tag3"], "chartType": "PIECHART",	"entityType": "TESTSET", "confId": 0},
+    {"desc": "Demo Data Linechart 2",	"tags": ["CR7654321","Tag4"], 	"chartType": "LINECHART", 	"entityType": "TESTSET","confId": 1}
+  ]}];
+
   constructor(public http: Http, public configuration : Configuration,
   public alertCtrl : AlertController, public util: Util) {
   }
@@ -39,7 +49,7 @@ export class ChartItemServiceProvider {
 
     if(serverUrl=="") {
       return new Promise(resolve => {
-        this.data = this.chartItem;
+        this.data = this.chartItem2;
         resolve(this.data);
       })
     }
