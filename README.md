@@ -1,5 +1,11 @@
 # MobileApplicationDashboard
-MobileApplicationDashboard is an iOs/Android app which is able to display the data coming from RestDashboard https://github.houston.softwaregrp.net/HPE-SWS-ALM/RestDashboard.git.
+MobileApplicationDashboard is an iOs/Android app which is able to display data coming from 
+ - RestserviceDashboard https://github.houston.softwaregrp.net/PS-KM-ALM/RestserviceDashboard.git
+ - SchedulerDashboard https://github.houston.softwaregrp.net/PS-KM-ALM/SchedulerDashboard.git
+
+The App can be installed from:
+ - Android App: https://goo.gl/mGkzn6
+ - iOs App:https://goo.gl/B9b1aW
 
 
 ![slide1](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide1.PNG)
@@ -10,3 +16,4 @@ MobileApplicationDashboard is an iOs/Android app which is able to display the da
 ![slide6](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide6.PNG)
 ![slide7](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide7.PNG)
 ![slide8](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide8.PNG)
+
