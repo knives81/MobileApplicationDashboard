@@ -10,5 +10,3 @@ MobileApplicationDashboard is an iOs/Android app which is able to display the da
 ![slide6](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide6.PNG)
 ![slide7](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide7.PNG)
 ![slide8](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide8.PNG)
-![slide9](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide9.PNG)
-![slide10](https://github.houston.softwaregrp.net/HPE-SWS-ALM/MobileApplicationDashboard/blob/master/slide/Slide10.PNG)
