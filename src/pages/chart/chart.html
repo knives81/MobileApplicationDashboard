@@ -16,6 +16,7 @@
 
 
 <ion-content padding>
+<ion-spinner name="bubbles" *ngIf="isReady==false"></ion-spinner>
 <canvas *ngIf="isReady" ion-item baseChart
   [datasets]="chartDatasets"
   [labels]="chartLabels"
