@@ -19,6 +19,7 @@ import { Chart } from 'chart.js';
 })
 export class ChartPage {
 
+	
   isReady: boolean = false;
   results : any = 0;
   chartLegend: boolean = true;
@@ -81,15 +82,51 @@ export class ChartPage {
     Chart.pluginService.register({
 	afterDraw: function (chart, easing) {
 		if (chart.config.options.showPercentage || chart.config.options.showLabel) {
+
 			var self = chart.config;
 			var ctx = chart.chart.ctx;
+			ctx.textAlign = "center";
+			
+			//------------------------
+			
+      	var fontStyle = 'Arial';
+				var txt = chart.config.options.customInfo.text;
+        var color = chart.config.options.customInfo.color;
+        var sidePadding = 20;
+        var sidePaddingCalculated = (sidePadding/100) * (chart.innerRadius * 2)
+        //Start with a base font of 30px
+        ctx.font = "30px " + fontStyle;
+        
+				//Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+        var stringWidth = ctx.measureText(txt).width;
+        var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+        // Find out how much the font can grow in width.
+        var widthRatio = elementWidth / stringWidth;
+        var newFontSize = Math.floor(30 * widthRatio);
+        var elementHeight = (chart.innerRadius * 2);
+
+        // Pick a new font size so it will not be larger than the height of label.
+        var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+				//Set font settings to draw it correctly.
+        
+        ctx.textBaseline = 'middle';
+        var centernX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+        var centernY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+        ctx.font = fontSizeToUse+"px " + fontStyle;
+				ctx.fillStyle = color;
+				
+				ctx.fillText(txt, centernX, centernY);
+
+
+			//--------------------
 
 			ctx.font = '12px Arial';
-			ctx.textAlign = "center";
-			ctx.fillStyle = "#000";
+			ctx.fillStyle = "#000";		
+			ctx.textBaseline = 'middle';
+			
 
-      //chart.canvas.style.height = '300px';
-      //chart.canvas.style.width = '300px';
 
 			self.data.datasets.forEach(function (dataset, datasetIndex) {
 				var total = 0, //total values to compute fraction
@@ -122,6 +159,7 @@ export class ChartPage {
           radius = element._view.innerRadius + (element._view.outerRadius - element._view.innerRadius)*0.9;
 					centerx = element._model.x;
 					centery = element._model.y;
+					
 					var thispart = dataset.data[index],
 						arcsector = Math.PI * (2 * thispart / total);
 					if (element.hasValue() && dataset.data[index] > 0) {
@@ -135,6 +173,7 @@ export class ChartPage {
 
 
 				var lradius = radius;
+				
 				for (var idx in labelxy) {
 
 					if (labelxy[idx] === -1) continue;
@@ -147,7 +186,7 @@ export class ChartPage {
 					else {
             //var label = chart.config.data.labels[idx];
 						ctx.fillText(dataset.data[idx], dx, dy);
-
+						
             }
 				}
 				ctx.restore();

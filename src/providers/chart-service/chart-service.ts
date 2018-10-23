@@ -41,7 +41,8 @@ export class ChartServiceProvider {
   showLabel: true,
   responsive:true,
   animation: { animateScale: true, animateRotate: true },
-  maintainAspectRatio: false
+  maintainAspectRatio: false,
+  customInfo: { text: "-11", color: "#C00000"}
 	}
 };
 
@@ -96,7 +97,8 @@ export class ChartServiceProvider {
   showLabel: true,
   responsive:true,
   animation: { animateScale: true, animateRotate: true },
-  maintainAspectRatio: false
+  maintainAspectRatio: false,
+  customInfo: { text: "", color: "#000000"}
 	}
 };
 
