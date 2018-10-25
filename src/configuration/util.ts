@@ -8,6 +8,9 @@ export class Util {
 
    getHeaders(username : string, password : string): RequestOptions {
     let headers: Headers = new Headers();
+	headers.append('Access-Control-Allow-Origin' , '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    headers.append('Accept','application/json');
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));
     let options = new RequestOptions({headers:headers});
