@@ -1,7 +1,7 @@
 {
   "name": "dashboardMobile",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "version": "1.14.0",
+  "author": "Maurizio Pinzi maurizio.pinzi@gmail.com",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
